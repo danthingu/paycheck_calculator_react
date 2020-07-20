@@ -117,7 +117,7 @@ export default function RadioButtonsGroup() {
         </div>
         <Divider className={classes.divider} />
         <div className={classes.root}>
-            <Paper variant="outlined" style={{padding: 20}}>
+            <Paper variant="outlined" style={{padding: 50}}>
 
                 {/* TAXES */}
                 <Grid container spacing={1}>
