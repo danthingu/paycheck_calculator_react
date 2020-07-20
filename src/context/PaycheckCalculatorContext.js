@@ -12,7 +12,7 @@ const PaycheckCalculatorContextProvider = props => {
         stateAllowance: '0',
         localAllowance: '0',
         salaryType: '0',
-        salaryInput: '101000',
+        salaryInput: '80000',
         currentSavingAmount: '6000',
         apyAnnually: '1',
         paycheckPercentSaved: '40',
