@@ -34,6 +34,7 @@ const PaycheckCalculatorContextProvider = props => {
         grossPaycheck: '',
         futureCompoundInterest: '',
         monthlyPutAsideFromPaycheck: '',
+        yearFuture: '',
       });
     
     const handleSalaryWorkSavingInfoChange = (prop) => (event) => {
