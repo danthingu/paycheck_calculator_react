@@ -94,7 +94,7 @@ export default function RadioButtonsGroup() {
                             min={0}
                             step={5000}
                             max={1000000}
-                            value={typeof salaryAmount === 'number' ? salaryAmount: 0}
+                            value={salaryAmount}
                             onChange={handleSliderChange}
                             aria-labelledby="input-slider"
                             />
