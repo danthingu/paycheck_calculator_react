@@ -172,6 +172,7 @@ export default function RadioButtonsGroup() {
                                     className={classes.input}
                                     value={percentSavedFromPayCheck}
                                     margin="dense"
+                                    style={{width:'46px'}}
                                     onChange={e => setPercentSavedFromPayCheck(e.target.value)}
                                     onBlur={() => handlePaycheckPercentSavedBlur}
                                     inputProps={{
