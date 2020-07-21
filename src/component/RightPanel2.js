@@ -20,8 +20,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import clsx from  'clsx';
-import { PieChart } from 'react-minimal-pie-chart';
 import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext';
+import PieChart from './PieChart';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -63,6 +63,11 @@ export default function RadioButtonsGroup() {
   const [ percentSavedFromPayCheck, setPercentSavedFromPayCheck ] = useState(salaryWorkSavingInfo.paycheckPercentSaved);
   const [ yearsSaved, setYearsSaved ] = useState(salaryWorkSavingInfo.yearSaved)
   const [ futureCompoundInterestDisplay, setFutureCompoundInterestDisplay] = useState(salaryWorkSavingInfo.futureCompoundInterest)
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   const handleInitialDepositBlur = e => {
     setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, currentSavingAmount: initialDeposit });
   }
@@ -101,9 +106,9 @@ export default function RadioButtonsGroup() {
 
 
   const dataMock = [
-    { title: 'One', value: 10, color: '#E38627', tooltip: 'current saving balance: $100' },
-    { title: 'Two', value: 15, color: '#C13C37', tooltip: 'current saving balance: $100' },
-    { title: 'Three', value: 20, color: '#6A2135', tooltip: 'current saving balance: $100' },
+    { title: 'One', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.salaryInput.replace(',', '')))), color: '#02bceb', tooltip: 'current saving balance: $100' },
+    { title: 'Two', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.netIncome.replace(',', '')))), color: '#07f527', tooltip: 'current saving balance: $100' },
+    { title: 'Three', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.futureCompoundInterest.replace(',', '')))), color: '#c60bd4', tooltip: 'current saving balance: $100' },
   ];
 
   const defaultLabelStyle = {
@@ -239,17 +244,18 @@ export default function RadioButtonsGroup() {
         </div>
         <Divider className={classes.divider} />
         <div>
-          <PieChart
+          {/* <PieChart
             data={dataMock}
             radius={25}
             label={({ dataEntry }) => dataEntry.value}
             labelStyle={(index) => ({
               fill: 'white',
-              fontSize: '5px',
+              fontSize: '3px',
               fontFamily: 'sans-serif',
             })}
             labelPosition={60}
-          />
+          /> */}
+          <PieChart />
         </div>
         
     </div>
