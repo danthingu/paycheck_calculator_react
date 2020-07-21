@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -12,6 +12,7 @@ import Input from '@material-ui/core/Input';
 import Slider from '@material-ui/core/Slider';
 import Tooltip from '@material-ui/core/Tooltip';
 import Grid from '@material-ui/core/Grid';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Paper from '@material-ui/core/Paper';
 import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext';
 
@@ -44,18 +45,25 @@ const useStyles = makeStyles((theme) => ({
 export default function RadioButtonsGroup() {
   const classes = useStyles();
   const { salaryWorkSavingInfo, setSalaryWorkSavingInfo, handleSalaryWorkSavingInfoChange } = useContext(PaycheckCalculatorContext)
+  const [ salaryAmount, setSalaryAmount ] = useState(salaryWorkSavingInfo.salaryInput);
 
   const formatNumbers = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  const handleSliderChange = (event, newValue) => {
-    setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: newValue });
+//   const handleSliderChange = (event, newValue) => {
+//     setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: newValue });
+//   };
+
+   const handleSliderChange = (event, newValue) => {
+    setSalaryAmount(newValue);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     if (salaryWorkSavingInfo.salaryInput < 0) {
         setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 0 });
-    } else if (salaryWorkSavingInfo.salaryInput > 10000000) {
+    } else if (salaryWorkSavingInfo.salaryInput > 100000000000) {
         setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 100 });
+    } else {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: salaryAmount });
     }
   };
 
@@ -80,29 +88,37 @@ export default function RadioButtonsGroup() {
                     <Typography id="input-slider" gutterBottom>
                         Salary
                     </Typography>
-                    <Slider
-                        className={classes.slider}
-                        value={typeof salaryWorkSavingInfo.salaryInput === 'number' ? salaryWorkSavingInfo.salaryInput : 0}
-                        onChange={handleSliderChange}
-                        aria-labelledby="input-slider"
-                        />
-                        <div>
+                    <ClickAwayListener onClickAway={handleBlur}>
+                        <Slider
+                            className={classes.slider}
+                            min={0}
+                            step={5000}
+                            max={1000000}
+                            value={typeof salaryAmount === 'number' ? salaryAmount: 0}
+                            onChange={handleSliderChange}
+                            aria-labelledby="input-slider"
+                            />
+                    </ClickAwayListener>
+                    
+                    <div>
+                        <ClickAwayListener onClickAway={handleBlur}>
                             <span class="currencyinput">$
                             <Input
                                 className={classes.input}
-                                value={salaryWorkSavingInfo.salaryInput}
+                                value={salaryAmount}
                                 margin="dense"
-                                onChange={handleSalaryWorkSavingInfoChange('salaryInput')}
-                                onBlur={handleBlur}
+                                onChange={e => setSalaryAmount(e.target.value)}
+                                onBlur={() => handleBlur}
                                 inputProps={{
-                                step: 1,
+                                step: 5000,
                                 min: 0,
-                                max: 10000000,
+                                max: 100000000000,
                                 type: 'number',
                                 'aria-labelledby': 'input-slider',
                                 }}
                             /></span>
-                        </div>
+                        </ClickAwayListener>
+                    </div>
                     </div>
                 </Grid>
             </Grid>
