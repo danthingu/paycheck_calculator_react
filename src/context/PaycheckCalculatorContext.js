@@ -32,6 +32,7 @@ const PaycheckCalculatorContextProvider = props => {
         totalFicaPercent: '',
         takeHomeSalaryTaxPercent: '',
         grossPaycheck: '',
+        future_compound_interest: '',
       });
     
     const handleSalaryWorkSavingInfoChange = (prop) => (event) => {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -57,27 +57,37 @@ export default function RadioButtonsGroup() {
   const classes = useStyles();
   const { salaryWorkSavingInfo, setSalaryWorkSavingInfo, handleSalaryWorkSavingInfoChange } = useContext(PaycheckCalculatorContext)
  
+  
+  const [ percentSavedFromPayCheck, setPercentSavedFromPayCheck ] = useState(salaryWorkSavingInfo.paycheckPercentSaved);
+  const [ yearsSaved, setYearsSaved ] = useState(salaryWorkSavingInfo.yearSaved)
+
   const handlePaycheckPercentSavedSliderChange = (event, newValue) => {
-    setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: newValue });
+    setPercentSavedFromPayCheck(newValue)
   };
   const handleYearsSavedSliderChange = (event, newValue) => {
-    setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, yearSaved: newValue });
+    setYearsSaved(newValue);
   };
-  const handlePaycheckPercentSavedBlur = () => {
-    if (salaryWorkSavingInfo.salaryInput < 0) {
-        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 0 });
-    } else if (salaryWorkSavingInfo.salaryInput > 100) {
-        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 100 });
+
+  const handlePaycheckPercentSavedBlur = (e) => {
+    if (percentSavedFromPayCheck < 0) {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: 0 });
+    } else if (percentSavedFromPayCheck > 100) {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: 100 });
+    } else {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: percentSavedFromPayCheck });
     }
   };
 
-  const handleYearSavedBlur = () => {
-    if (salaryWorkSavingInfo.salaryInput < 0) {
-        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 0 });
-    } else if (salaryWorkSavingInfo.salaryInput > 100) {
-        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, salaryInput: 100 });
+  const handleYearSavedBlur = (e) => {
+    if (yearsSaved < 0) {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, yearSaved: 0 });
+    } else if (yearsSaved > 100) {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, yearSaved: 100 });
+    } else {
+        setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, yearSaved: yearsSaved });
     }
   };
+
 
   const dataMock = [
     { title: 'One', value: 10, color: '#E38627', tooltip: 'current saving balance: $100' },
@@ -129,7 +139,7 @@ export default function RadioButtonsGroup() {
                     </Typography>
                     <Slider
                         className={classes.slider}
-                        value={typeof salaryWorkSavingInfo.paycheckPercentSaved === 'number' ? salaryWorkSavingInfo.paycheckPercentSaved : 0}
+                        value={percentSavedFromPayCheck}
                         onChange={handlePaycheckPercentSavedSliderChange}
                         aria-labelledby="input-slider"
                         />
@@ -137,10 +147,10 @@ export default function RadioButtonsGroup() {
                             <span class="currencyinput">
                             <Input
                                 className={classes.input}
-                                value={salaryWorkSavingInfo.paycheckPercentSaved}
+                                value={percentSavedFromPayCheck}
                                 margin="dense"
-                                onChange={handleSalaryWorkSavingInfoChange('paycheckPercentSaved')}
-                                onBlur={handlePaycheckPercentSavedBlur}
+                                onChange={e => handleYearSavedBlur(e.target.value)}
+                                onBlur={() => handlePaycheckPercentSavedBlur}
                                 inputProps={{
                                 step: 1,
                                 min: 0,
@@ -159,17 +169,17 @@ export default function RadioButtonsGroup() {
                     </Typography>
                     <Slider
                         className={classes.slider}
-                        value={typeof salaryWorkSavingInfo.yearSaved === 'number' ? salaryWorkSavingInfo.yearSaved : 0}
+                        value={yearsSaved}
                         onChange={handleYearsSavedSliderChange}
                         aria-labelledby="input-slider"
                         />
                         <div>
                             <Input
                                 className={classes.input}
-                                value={salaryWorkSavingInfo.yearSaved}
+                                value={yearsSaved}
                                 margin="dense"
-                                onChange={handleSalaryWorkSavingInfoChange('yearSaved')}
-                                onBlur={handleYearSavedBlur}
+                                onChange={e => setYearsSaved(e.target.value)}
+                                onBlur={() => handleYearSavedBlur}
                                 inputProps={{
                                 step: 1,
                                 min: 0,
