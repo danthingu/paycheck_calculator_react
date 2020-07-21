@@ -35,13 +35,13 @@ const Layout = () => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item className={classes.gridLeft} xs={2}>
+        <Grid item className={classes.gridLeft} xs={3}>
           <LeftPanel />
         </Grid>
         <Grid item xs={4}>
           <RightPanel />
         </Grid>
-        <Grid item xs={5} style={{marginLeft: '50px'}}>
+        <Grid item xs={4} style={{marginLeft: '50px'}}>
           <RightPanel2 />
         </Grid>
       </Grid>

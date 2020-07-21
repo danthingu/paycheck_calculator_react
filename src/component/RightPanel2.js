@@ -169,7 +169,7 @@ export default function RadioButtonsGroup() {
                     
                         <div>
                           <Grid container spacing={3}>
-                              <Grid item xs={6}>
+                              <Grid item xs={4}>
                               <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
 
                                 <span class="currencyinput">
@@ -190,8 +190,8 @@ export default function RadioButtonsGroup() {
                                 />%</span>
                               </ClickAwayListener>
                             </Grid>
-                            <Grid item xs={6}>
-                                <div style={{color: 'blue', fontWeight: 'bold', padding: 5}}>${salaryWorkSavingInfo.monthlyPutAsideFromPaycheck}/month</div>
+                            <Grid item xs={4}>
+                                <div style={{color: 'blue', fontWeight: 'bold', paddingTop: 5, paddingRight: '20px'}}>${salaryWorkSavingInfo.monthlyPutAsideFromPaycheck}/month</div>
                             </Grid>
                           </Grid>
                         </div>
