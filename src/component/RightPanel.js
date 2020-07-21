@@ -14,6 +14,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Grid from '@material-ui/core/Grid';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -85,10 +86,10 @@ export default function RadioButtonsGroup() {
                 </Grid>
                 <Grid item xs={9}>
                     <div>
-                    <Typography id="input-slider" gutterBottom>
-                        Salary
+                    <Typography id="input-slider" style={{fontWeight: 'bold', fontSize: '26px', color: 'black'}} gutterBottom>
+                        Salary Annually
                     </Typography>
-                    <ClickAwayListener onClickAway={handleBlur}>
+                    {/* <ClickAwayListener onClickAway={handleBlur}>
                         <Slider
                             className={classes.slider}
                             min={0}
@@ -98,25 +99,21 @@ export default function RadioButtonsGroup() {
                             onChange={handleSliderChange}
                             aria-labelledby="input-slider"
                             />
-                    </ClickAwayListener>
+                    </ClickAwayListener> */}
                     
                     <div>
                         <ClickAwayListener onClickAway={handleBlur}>
-                            <span class="currencyinput">$
+                            <span class="currencyinput" style={{fontWeight: 'bold', fontSize: '26px', color: 'black', fontFamily: 'monospace'}}>$
                             <Input
                                 className={classes.input}
+                                style={{fontWeight: 'bold', fontSize: '26px', color: 'black', background: '#e8e8e8', fontFamily: 'cursive', paddingLeft: '5px', width: '50%'}}
+                                id="filled-size-normal"
                                 value={salaryAmount}
                                 margin="dense"
                                 onChange={e => setSalaryAmount(e.target.value)}
-                                onBlur={() => handleBlur}
-                                inputProps={{
-                                step: 5000,
-                                min: 0,
-                                max: 100000000000,
-                                type: 'number',
-                                'aria-labelledby': 'input-slider',
-                                }}
-                            /></span>
+                                variant="filled"
+                                onBlur={() => handleBlur} />
+                            </span>
                         </ClickAwayListener>
                     </div>
                     </div>

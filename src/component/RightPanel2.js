@@ -62,7 +62,7 @@ export default function RadioButtonsGroup() {
   const [ apyYearly, setApyYearly ] = useState(salaryWorkSavingInfo.apyAnnually);
   const [ percentSavedFromPayCheck, setPercentSavedFromPayCheck ] = useState(salaryWorkSavingInfo.paycheckPercentSaved);
   const [ yearsSaved, setYearsSaved ] = useState(salaryWorkSavingInfo.yearSaved)
-
+  const [ futureCompoundInterestDisplay, setFutureCompoundInterestDisplay] = useState(salaryWorkSavingInfo.futureCompoundInterest)
   const handleInitialDepositBlur = e => {
     setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, currentSavingAmount: initialDeposit });
   }
@@ -72,6 +72,7 @@ export default function RadioButtonsGroup() {
   }
 
   const handlePaycheckPercentSavedSliderChange = (event, newValue) => {
+    
     setPercentSavedFromPayCheck(newValue)
   };
   const handleYearsSavedSliderChange = (event, newValue) => {
@@ -79,7 +80,7 @@ export default function RadioButtonsGroup() {
   };
 
   const handlePaycheckPercentSavedBlur = (e) => {
-    if (percentSavedFromPayCheck < 0) {
+      if (percentSavedFromPayCheck < 0) {
         setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: 0 });
     } else if (percentSavedFromPayCheck > 100) {
         setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, paycheckPercentSaved: 100 });
@@ -110,8 +111,7 @@ export default function RadioButtonsGroup() {
     fontFamily: 'sans-serif',
     fill:'white',
   };
-  
-  
+
   return (
     <div>
         <h2>SAVE MORE, EARN MORE!!</h2>
@@ -153,14 +153,14 @@ export default function RadioButtonsGroup() {
                     <Typography id="input-slider" gutterBottom>
                         Percent saved from your paycheck
                     </Typography>
-                    <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
+                    {/* <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
                       <Slider
                           className={classes.slider}
                           value={percentSavedFromPayCheck}
                           onChange={handlePaycheckPercentSavedSliderChange}
                           aria-labelledby="input-slider"
                           />
-                    </ClickAwayListener>
+                    </ClickAwayListener> */}
                     
                         <div>
                           <Grid container spacing={3}>
@@ -196,14 +196,14 @@ export default function RadioButtonsGroup() {
                     <Typography id="input-slider" gutterBottom>
                         Years to save
                     </Typography>
-                    <ClickAwayListener onClickAway={handleYearSavedBlur}>
+                    {/* <ClickAwayListener onClickAway={handleYearSavedBlur}>
                       <Slider
                           className={classes.slider}
                           value={yearsSaved}
                           onChange={handleYearsSavedSliderChange}
                           aria-labelledby="input-slider"
                           />
-                    </ClickAwayListener>
+                    </ClickAwayListener> */}
                     
                         <div>
                         <ClickAwayListener onClickAway={handleYearSavedBlur}>
