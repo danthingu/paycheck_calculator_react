@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useEffect} from 'react'
 import { calculatePaycheck } from '../api/services';
 
 export const PaycheckCalculatorContext = createContext();
@@ -12,10 +12,10 @@ const PaycheckCalculatorContextProvider = props => {
         stateAllowance: '0',
         localAllowance: '0',
         salaryType: '0',
-        salaryInput: '80000',
-        currentSavingAmount: '6000',
+        salaryInput: '50000',
+        currentSavingAmount: '5000',
         apyAnnually: '1',
-        paycheckPercentSaved: '40',
+        paycheckPercentSaved: '50',
         yearSaved: '5',
         federalTaxTotal: '',
         stateTaxTotal: '',
@@ -32,7 +32,8 @@ const PaycheckCalculatorContextProvider = props => {
         totalFicaPercent: '',
         takeHomeSalaryTaxPercent: '',
         grossPaycheck: '',
-        future_compound_interest: '',
+        futureCompoundInterest: '',
+        monthlyPutAsideFromPaycheck: '',
       });
     
     const handleSalaryWorkSavingInfoChange = (prop) => (event) => {

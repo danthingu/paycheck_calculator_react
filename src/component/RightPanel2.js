@@ -18,6 +18,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import clsx from  'clsx';
 import { PieChart } from 'react-minimal-pie-chart';
 import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext';
@@ -56,10 +57,19 @@ const useStyles = makeStyles((theme) => ({
 export default function RadioButtonsGroup() {
   const classes = useStyles();
   const { salaryWorkSavingInfo, setSalaryWorkSavingInfo, handleSalaryWorkSavingInfoChange } = useContext(PaycheckCalculatorContext)
- 
-  
+
+  const [ initialDeposit, setInitialDeposit ] = useState(salaryWorkSavingInfo.currentSavingAmount);
+  const [ apyYearly, setApyYearly ] = useState(salaryWorkSavingInfo.apyAnnually);
   const [ percentSavedFromPayCheck, setPercentSavedFromPayCheck ] = useState(salaryWorkSavingInfo.paycheckPercentSaved);
   const [ yearsSaved, setYearsSaved ] = useState(salaryWorkSavingInfo.yearSaved)
+
+  const handleInitialDepositBlur = e => {
+    setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, currentSavingAmount: initialDeposit });
+  }
+
+  const handleApyYearlyBlur = e => {
+    setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, apyAnnually: apyYearly });
+  }
 
   const handlePaycheckPercentSavedSliderChange = (event, newValue) => {
     setPercentSavedFromPayCheck(newValue)
@@ -111,25 +121,31 @@ export default function RadioButtonsGroup() {
                 <Grid item xs={6}>
                     <FormControl fullWidth className={classes.margin} variant="outlined">
                         <InputLabel style={{fontWeight: 'bold', fontSize: '18px', color:'black'}} htmlFor="outlined-adornment-amount">Current Saving Amount</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-amount"
-                            value={salaryWorkSavingInfo.currentSavingAmount}
-                            onChange={handleSalaryWorkSavingInfoChange('currentSavingAmount')}
-                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                            labelWidth={200}
-                        />
+                        <ClickAwayListener onClickAway={handleInitialDepositBlur}>
+                          <OutlinedInput
+                              id="outlined-adornment-amount"
+                              value={initialDeposit}
+                              onChange={e => setInitialDeposit(e.target.value)}
+                              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                              labelWidth={200}
+                          />
+                        </ClickAwayListener>
+                        
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
                     <FormControl fullWidth className={classes.margin} variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-amount">APY Annually</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-amount"
-                            value={salaryWorkSavingInfo.apyAnnually}
-                            onChange={handleSalaryWorkSavingInfoChange('apyAnnually')}
-                            endAdornment={<InputAdornment position="end">%</InputAdornment>}
-                            labelWidth={140}
-                        />
+                        <ClickAwayListener onClickAway={handleApyYearlyBlur}>
+                          <OutlinedInput
+                              id="outlined-adornment-amount"
+                              value={apyYearly}
+                              onChange={e => setApyYearly(e.target.value)}
+                              endAdornment={<InputAdornment position="end">%</InputAdornment>}
+                              labelWidth={140}
+                          />
+                        </ClickAwayListener>
+                       
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
@@ -137,28 +153,41 @@ export default function RadioButtonsGroup() {
                     <Typography id="input-slider" gutterBottom>
                         Percent saved from your paycheck
                     </Typography>
-                    <Slider
-                        className={classes.slider}
-                        value={percentSavedFromPayCheck}
-                        onChange={handlePaycheckPercentSavedSliderChange}
-                        aria-labelledby="input-slider"
-                        />
+                    <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
+                      <Slider
+                          className={classes.slider}
+                          value={percentSavedFromPayCheck}
+                          onChange={handlePaycheckPercentSavedSliderChange}
+                          aria-labelledby="input-slider"
+                          />
+                    </ClickAwayListener>
+                    
                         <div>
-                            <span class="currencyinput">
-                            <Input
-                                className={classes.input}
-                                value={percentSavedFromPayCheck}
-                                margin="dense"
-                                onChange={e => handleYearSavedBlur(e.target.value)}
-                                onBlur={() => handlePaycheckPercentSavedBlur}
-                                inputProps={{
-                                step: 1,
-                                min: 0,
-                                max: 10000000,
-                                type: 'number',
-                                'aria-labelledby': 'input-slider',
-                                }}
-                            />%</span>
+                          <Grid container spacing={3}>
+                              <Grid item xs={6}>
+                              <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
+
+                                <span class="currencyinput">
+                                <Input
+                                    className={classes.input}
+                                    value={percentSavedFromPayCheck}
+                                    margin="dense"
+                                    onChange={e => handleYearSavedBlur(e.target.value)}
+                                    onBlur={() => handlePaycheckPercentSavedBlur}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 0,
+                                    max: 10000000,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />%</span>
+                              </ClickAwayListener>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <div style={{color: 'blue', fontWeight: 'bold', padding: 5}}>${salaryWorkSavingInfo.monthlyPutAsideFromPaycheck}/month</div>
+                            </Grid>
+                          </Grid>
                         </div>
                     </div>
                 </Grid>
@@ -167,13 +196,17 @@ export default function RadioButtonsGroup() {
                     <Typography id="input-slider" gutterBottom>
                         Years to save
                     </Typography>
-                    <Slider
-                        className={classes.slider}
-                        value={yearsSaved}
-                        onChange={handleYearsSavedSliderChange}
-                        aria-labelledby="input-slider"
-                        />
+                    <ClickAwayListener onClickAway={handleYearSavedBlur}>
+                      <Slider
+                          className={classes.slider}
+                          value={yearsSaved}
+                          onChange={handleYearsSavedSliderChange}
+                          aria-labelledby="input-slider"
+                          />
+                    </ClickAwayListener>
+                    
                         <div>
+                        <ClickAwayListener onClickAway={handleYearSavedBlur}>
                             <Input
                                 className={classes.input}
                                 value={yearsSaved}
@@ -188,6 +221,7 @@ export default function RadioButtonsGroup() {
                                 'aria-labelledby': 'input-slider',
                                 }}
                             />
+                          </ClickAwayListener>
                         </div>
                     </div>
                 </Grid>
@@ -198,7 +232,7 @@ export default function RadioButtonsGroup() {
             <Grid container spacing={1}  style={{textAlign: "center"}}>
                 <Grid item xs={12}>
                     <h2>Your savings balance at the end of 2024 will be</h2>
-                    <h1 style={{color: 'green'}}>$1234</h1>
+                    <h1 style={{color: 'green'}}>${salaryWorkSavingInfo.futureCompoundInterest}</h1>
                 </Grid>
             </Grid>                
         </div>
