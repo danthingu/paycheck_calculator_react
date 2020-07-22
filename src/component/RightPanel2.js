@@ -78,7 +78,7 @@ export default function RadioButtonsGroup() {
     setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, currentSavingAmount: initialDeposit });
   }
 
-  const handleApyYearlyBlur = e => {
+  const handleApyYearlyBlur = () => {
     setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, apyAnnually: apyYearly });
   }
 
@@ -115,7 +115,7 @@ export default function RadioButtonsGroup() {
         <Divider className={classes.divider} />
         <div className={classes.root}>
             <Grid container spacing={3}>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
                     <FormControl fullWidth className={classes.margin} variant="outlined">
                         <InputLabel style={{fontWeight: 'bold', fontSize: '18px', color:'black'}} htmlFor="outlined-adornment-amount">Current Saving Amount</InputLabel>
                         <ClickAwayListener onClickAway={handleInitialDepositBlur}>
@@ -130,7 +130,7 @@ export default function RadioButtonsGroup() {
                         
                     </FormControl>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                     <FormControl fullWidth className={classes.margin} variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-amount">APY Annually</InputLabel>
                         <ClickAwayListener onClickAway={handleApyYearlyBlur}>
@@ -145,10 +145,10 @@ export default function RadioButtonsGroup() {
                        
                     </FormControl>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
                     <div>
                     <Typography id="input-slider" gutterBottom>
-                        Percent saved from your paycheck
+                        Percent saved from your take home paycheck 
                     </Typography>
                     {/* <ClickAwayListener onClickAway={handlePaycheckPercentSavedBlur}>
                       <Slider
@@ -189,7 +189,7 @@ export default function RadioButtonsGroup() {
                         </div>
                     </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                     <div>
                     <Typography id="input-slider" gutterBottom>
                         Years to save
@@ -248,10 +248,10 @@ export default function RadioButtonsGroup() {
             </Typography>
             <DemoTabs labelId="demo-a11y-tabs-manual-label" onChange={handleTabValueChange} value={tabValue} />
             <TabPanel value={tabValue} index={0}>
-              <SavingsAccounts />
+              <SavingsAccounts setApyYearly={setApyYearly} />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-              <CDAccounts />
+              <CDAccounts setApyYearly={setApyYearly}/>
             </TabPanel>
             <TabPanel value={tabValue} index={2}>
               Item Three

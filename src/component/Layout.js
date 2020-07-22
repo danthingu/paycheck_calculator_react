@@ -41,7 +41,7 @@ const Layout = () => {
         <Grid item xs={4}>
           <RightPanel />
         </Grid>
-        <Grid item xs={4} style={{marginLeft: '50px'}}>
+        <Grid item xs={4} style={{marginLeft: '30px'}}>
           <RightPanel2 />
         </Grid>
       </Grid>
