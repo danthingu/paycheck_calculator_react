@@ -22,6 +22,9 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import clsx from  'clsx';
 import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext';
 import PieChart from './PieChart';
+import {TabPanel, DemoTabs} from './TabPanelItems';
+import SavingsAccounts from './SavingsAccounts';
+import CDAccounts from './CDAccounts';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -63,7 +66,10 @@ export default function RadioButtonsGroup() {
   const [ percentSavedFromPayCheck, setPercentSavedFromPayCheck ] = useState(salaryWorkSavingInfo.paycheckPercentSaved);
   const [ yearsSaved, setYearsSaved ] = useState(salaryWorkSavingInfo.yearSaved)
   const [ futureCompoundInterestDisplay, setFutureCompoundInterestDisplay] = useState(salaryWorkSavingInfo.futureCompoundInterest)
-
+  const [tabValue, setTabValue] = React.useState(0);
+  const handleTabValueChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -103,20 +109,6 @@ export default function RadioButtonsGroup() {
         setSalaryWorkSavingInfo({ ...salaryWorkSavingInfo, yearSaved: yearsSaved });
     }
   };
-
-
-  const dataMock = [
-    { title: 'One', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.salaryInput.replace(',', '')))), color: '#02bceb', tooltip: 'current saving balance: $100' },
-    { title: 'Two', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.netIncome.replace(',', '')))), color: '#07f527', tooltip: 'current saving balance: $100' },
-    { title: 'Three', value: parseFloat(numberWithCommas(parseFloat(salaryWorkSavingInfo.futureCompoundInterest.replace(',', '')))), color: '#c60bd4', tooltip: 'current saving balance: $100' },
-  ];
-
-  const defaultLabelStyle = {
-    fontSize: '5px',
-    fontFamily: 'sans-serif',
-    fill:'white',
-  };
-
   return (
     <div>
         <h2>SAVE MORE, EARN MORE!!</h2>
@@ -237,26 +229,34 @@ export default function RadioButtonsGroup() {
         <div className={clsx(classes.root, classes.spacious)}>
             <Grid container spacing={1}  style={{textAlign: "center"}}>
                 <Grid item xs={12}>
-                    <h2>Your savings balance at the end of {salaryWorkSavingInfo.yearFuture} will be</h2>
-                    <h1 style={{color: 'green'}}>${salaryWorkSavingInfo.futureCompoundInterest}</h1>
+                    {/* <h6>Your savings balance at the end of {salaryWorkSavingInfo.yearFuture} will be</h6>
+                    <h6 style={{color: 'green'}}>${salaryWorkSavingInfo.futureCompoundInterest}</h6> */}
+                    <div style={{fontWeight: 'bold', fontSize: '22px'}}>Your savings balance at the end of {salaryWorkSavingInfo.yearFuture} will be</div>
+                    <div style={{color: 'green', fontWeight: 'bold', fontSize: '22px'}}>${salaryWorkSavingInfo.futureCompoundInterest}</div>
                 </Grid>
             </Grid>                
         </div>
         <Divider className={classes.divider} />
         <div>
-          {/* <PieChart
-            data={dataMock}
-            radius={25}
-            label={({ dataEntry }) => dataEntry.value}
-            labelStyle={(index) => ({
-              fill: 'white',
-              fontSize: '3px',
-              fontFamily: 'sans-serif',
-            })}
-            labelPosition={60}
-          /> */}
           <PieChart />
         </div>
+        <Divider className={classes.divider} />
+        <div style={{marginTop: '20px', textAlign: 'center'}}>
+          <Typography id="demo-a11y-tabs-manual-label">
+          <span style={{fontWeight: 'bold', fontSize: '20px', fontFamily: 'mono'}}>Where should you put your money?</span>
+            </Typography>
+            <DemoTabs labelId="demo-a11y-tabs-manual-label" onChange={handleTabValueChange} value={tabValue} />
+            <TabPanel value={tabValue} index={0}>
+              <SavingsAccounts />
+            </TabPanel>
+            <TabPanel value={tabValue} index={1}>
+              <CDAccounts />
+            </TabPanel>
+            <TabPanel value={tabValue} index={2}>
+              Item Three
+            </TabPanel>
+        </div>
+       
         
     </div>
     

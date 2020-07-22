@@ -140,7 +140,7 @@ export default function RadioButtonsGroup() {
                     <Grid item xs={10}>
                         Gross Paycheck
                     </Grid>
-                    <Grid item xs={2} justify='flex-end' direction='row' style={{fontWeight: 'bold', fontSize: '18px', color: 'green'}}>
+                    <Grid item xs={2} justify='flex-end' direction='row' style={{fontWeight: 'bold', fontSize: '15px', color: 'green'}}>
                         ${formatNumbers(salaryWorkSavingInfo.grossPaycheck)}
                     </Grid>
                 </Grid>
@@ -148,31 +148,31 @@ export default function RadioButtonsGroup() {
                 <Grid container spacing={1}>
                     <Grid item xs={8}>
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>Taxes</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>Taxes</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Federal Income</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">State Income</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Local Income</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Federal Income</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">State Income</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Local Income</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2} justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>{salaryWorkSavingInfo.totalTaxPercent}%</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>{salaryWorkSavingInfo.totalTaxPercent}%</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">{formatNumbers(salaryWorkSavingInfo.federalTaxPercent)}%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">{formatNumbers(salaryWorkSavingInfo.stateTaxPercent)}%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">{formatNumbers(salaryWorkSavingInfo.federalTaxPercent)}%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">{formatNumbers(salaryWorkSavingInfo.stateTaxPercent)}%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2}  justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>${salaryWorkSavingInfo.totalTaxAmount}</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>${salaryWorkSavingInfo.totalTaxAmount}</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">${formatNumbers(salaryWorkSavingInfo.federalTaxTotal)}</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">${formatNumbers(salaryWorkSavingInfo.stateTaxTotal)}</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">${formatNumbers(salaryWorkSavingInfo.federalTaxTotal)}</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">${formatNumbers(salaryWorkSavingInfo.stateTaxTotal)}</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
@@ -183,28 +183,28 @@ export default function RadioButtonsGroup() {
                 <Grid container spacing={1}>
                     <Grid item xs={8}>
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>FICA</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>FICA</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Social Security</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Medicare</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Social Security</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Medicare</FormLabel>
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2} justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>{salaryWorkSavingInfo.totalFicaPercent}%</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>{salaryWorkSavingInfo.totalFicaPercent}%</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">{salaryWorkSavingInfo.socialSecurityTaxPercent}%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">{salaryWorkSavingInfo.medicareTaxPercent}%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">{salaryWorkSavingInfo.socialSecurityTaxPercent}%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">{salaryWorkSavingInfo.medicareTaxPercent}%</FormLabel>
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2}  justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>${salaryWorkSavingInfo.totalFicaAmount}</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>${salaryWorkSavingInfo.totalFicaAmount}</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">${salaryWorkSavingInfo.socialSecurityTaxAmount}</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">${salaryWorkSavingInfo.medicareTaxAmount}</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">${salaryWorkSavingInfo.socialSecurityTaxAmount}</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">${salaryWorkSavingInfo.medicareTaxAmount}</FormLabel>
                             </div>
                         </React.Fragment>
                     </Grid>
@@ -215,40 +215,40 @@ export default function RadioButtonsGroup() {
                 <Grid container spacing={1}>
                     <Grid item xs={8}>
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>Pre-Tax Deductions</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>Pre-Tax Deductions</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Medical Insurance</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Dental Coverage</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">Vision Insurance</FormLabel> 
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">401K</FormLabel> 
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">HSA</FormLabel> 
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">FSA</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Medical Insurance</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Dental Coverage</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">Vision Insurance</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">401K</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">HSA</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">FSA</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2} justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>0.00%</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>0.00%</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel> 
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">0.00%</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2}  justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '14px'}}>$0</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>$0</label>
                             <div>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel> 
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel>
-                                <FormLabel style={{fontSize: '14px', padding: 5}} component="legend">$0</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel> 
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel> 
                             </div>
                         </React.Fragment>
                     </Grid>
@@ -258,17 +258,17 @@ export default function RadioButtonsGroup() {
                 <Grid container spacing={1}>
                     <Grid item xs={8}>
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '16px', color: 'green'}}>Take Home Salary</label>
+                            <label style={{fontWeight: 'bold', fontSize: '14px', color: 'green'}}>Take Home Salary</label>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2} justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '16px', color: 'green'}}>{salaryWorkSavingInfo.takeHomeSalaryTaxPercent}%</label>
+                            <label style={{fontWeight: 'bold', fontSize: '14px', color: 'green'}}>{salaryWorkSavingInfo.takeHomeSalaryTaxPercent}%</label>
                         </React.Fragment>
                     </Grid>
                     <Grid item xs={2}  justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '16px', color: 'green'}}>${salaryWorkSavingInfo.netIncome}</label>
+                            <label style={{fontWeight: 'bold', fontSize: '14px', color: 'green'}}>${salaryWorkSavingInfo.netIncome}</label>
                         </React.Fragment>
                     </Grid>
                 </Grid>  

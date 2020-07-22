@@ -4,13 +4,13 @@ import { PaycheckCalculatorContext } from '../context/PaycheckCalculatorContext'
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
  
 const PieChart = () => {
-	const { salaryWorkSavingInfo, setSalaryWorkSavingInfo, handleSalaryWorkSavingInfoChange } = useContext(PaycheckCalculatorContext)
+	const { salaryWorkSavingInfo } = useContext(PaycheckCalculatorContext)
 
 	const options = {
 		exportEnabled: true,
 		animationEnabled: true,
 		title: {
-			text: "Saving and Investing Summary"
+			text: "Saving and Investment Summary"
 		},
 		data: [{
 			type: "pie",
@@ -18,14 +18,13 @@ const PieChart = () => {
 			toolTipContent: "<b>{label}</b>: ${y}",
 			showInLegend: "true",
 			legendText: "{label}",
-			indexLabelFontSize: 16,
+			indexLabelFontSize: 12,
 			indexLabel: "{label} - ${y}",
 			dataPoints: [
-				{ y: parseFloat(salaryWorkSavingInfo.salaryInput.replace(/,/g, '')), label: "Gross Salary" },
 				{ y: parseFloat(salaryWorkSavingInfo.totalTaxAmount.replace(/,/g, '')), label: "Taxes" },
+				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*80/100, label: "Remaining cash" },
 				{ y: parseFloat(salaryWorkSavingInfo.totalFicaAmount.replace(/,/g, '')), label: "Fica" },
-				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, '')), label: "Take Home Salary" },
-				{ y: parseFloat(salaryWorkSavingInfo.futureCompoundInterest.replace(/,/g, '')), label: "Investment" }
+				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*20/100, label: "Savings" },
 			]
 		}]
 	}
