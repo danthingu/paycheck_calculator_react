@@ -25,6 +25,7 @@ import PieChart from './PieChart';
 import {TabPanel, DemoTabs} from './TabPanelItems';
 import SavingsAccounts from './SavingsAccounts';
 import CDAccounts from './CDAccounts';
+import MutualIndexFunds from './MutualIndexFunds';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -247,14 +248,14 @@ export default function RadioButtonsGroup() {
           <span style={{fontWeight: 'bold', fontSize: '24px', fontFamily: 'fantasy'}}>Places to save your extra money!</span>
             </Typography>
             <DemoTabs labelId="demo-a11y-tabs-manual-label" onChange={handleTabValueChange} value={tabValue} />
-            <TabPanel value={tabValue} index={0}>
+            <TabPanel value={tabValue} index={1}>
               <SavingsAccounts setApyYearly={setApyYearly} />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
               <CDAccounts setApyYearly={setApyYearly}/>
             </TabPanel>
             <TabPanel value={tabValue} index={2}>
-              Item Three
+              <MutualIndexFunds setApyYearly={setApyYearly}/>
             </TabPanel>
         </div>
        
