@@ -248,7 +248,7 @@ export default function RadioButtonsGroup() {
           <span style={{fontWeight: 'bold', fontSize: '24px', fontFamily: 'fantasy'}}>Places to save your extra money!</span>
             </Typography>
             <DemoTabs labelId="demo-a11y-tabs-manual-label" onChange={handleTabValueChange} value={tabValue} />
-            <TabPanel value={tabValue} index={1}>
+            <TabPanel value={tabValue} index={0}>
               <SavingsAccounts setApyYearly={setApyYearly} />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
