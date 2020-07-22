@@ -175,7 +175,7 @@ export default function RadioButtonsGroup() {
                                     inputProps={{
                                     step: 1,
                                     min: 0,
-                                    max: 10000000,
+                                    max: 100,
                                     type: 'number',
                                     'aria-labelledby': 'input-slider',
                                     }}
@@ -208,13 +208,14 @@ export default function RadioButtonsGroup() {
                             <Input
                                 className={classes.input}
                                 value={yearsSaved}
+                                style={{maxWidth: '60px'}}
                                 margin="dense"
                                 onChange={e => setYearsSaved(e.target.value)}
                                 onBlur={() => handleYearSavedBlur}
                                 inputProps={{
                                 step: 1,
                                 min: 0,
-                                max: 10000000,
+                                max: 100,
                                 type: 'number',
                                 'aria-labelledby': 'input-slider',
                                 }}
@@ -243,7 +244,7 @@ export default function RadioButtonsGroup() {
         <Divider className={classes.divider} />
         <div style={{marginTop: '20px', textAlign: 'center'}}>
           <Typography id="demo-a11y-tabs-manual-label">
-          <span style={{fontWeight: 'bold', fontSize: '20px', fontFamily: 'mono'}}>Where should you put your money?</span>
+          <span style={{fontWeight: 'bold', fontSize: '24px', fontFamily: 'fantasy'}}>Places to save your extra money!</span>
             </Typography>
             <DemoTabs labelId="demo-a11y-tabs-manual-label" onChange={handleTabValueChange} value={tabValue} />
             <TabPanel value={tabValue} index={0}>

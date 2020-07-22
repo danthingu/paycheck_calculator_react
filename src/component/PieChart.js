@@ -5,7 +5,8 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
  
 const PieChart = () => {
 	const { salaryWorkSavingInfo } = useContext(PaycheckCalculatorContext)
-
+	const savedPercent = salaryWorkSavingInfo.paycheckPercentSaved / 100.00
+	const remainingPercent = (100.00 - parseFloat(salaryWorkSavingInfo.paycheckPercentSaved))/100.00;
 	const options = {
 		exportEnabled: true,
 		animationEnabled: true,
@@ -22,9 +23,9 @@ const PieChart = () => {
 			indexLabel: "{label} - ${y}",
 			dataPoints: [
 				{ y: parseFloat(salaryWorkSavingInfo.totalTaxAmount.replace(/,/g, '')), label: "Taxes" },
-				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*80/100, label: "Remaining cash" },
+				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*remainingPercent, label: "Remaining cash" },
 				{ y: parseFloat(salaryWorkSavingInfo.totalFicaAmount.replace(/,/g, '')), label: "Fica" },
-				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*20/100, label: "Savings" },
+				{ y: parseFloat(salaryWorkSavingInfo.netIncome.replace(/,/g, ''))*savedPercent, label: "Savings" },
 			]
 		}]
 	}
