@@ -36,6 +36,7 @@ const PaycheckCalculatorContextProvider = props => {
         monthlyPutAsideFromPaycheck: '',
         yearFuture: '',
         contribution401kAmount: '200',
+        preTaxDeductionPercentage: '',
       });
     
     const handleSalaryWorkSavingInfoChange = (prop) => (event) => {

@@ -232,7 +232,7 @@ export default function RadioButtonsGroup() {
                     </Grid>
                     <Grid item xs={2} justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>0.00%</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>${salaryWorkSavingInfo.preTaxDeductionPercentage}%</label>
                             <div>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">0.00%</FormLabel>
@@ -245,7 +245,7 @@ export default function RadioButtonsGroup() {
                     </Grid>
                     <Grid item xs={2}  justify="flex-end">
                         <React.Fragment>
-                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>$0</label>
+                            <label style={{fontWeight: 'bold', fontSize: '12px'}}>${salaryWorkSavingInfo.contribution401kAmount}</label>
                             <div>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
