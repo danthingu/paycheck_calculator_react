@@ -35,6 +35,7 @@ const PaycheckCalculatorContextProvider = props => {
         futureCompoundInterest: '',
         monthlyPutAsideFromPaycheck: '',
         yearFuture: '',
+        contribution401kAmount: '200',
       });
     
     const handleSalaryWorkSavingInfoChange = (prop) => (event) => {

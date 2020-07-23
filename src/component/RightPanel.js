@@ -246,7 +246,7 @@ export default function RadioButtonsGroup() {
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel> 
-                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
+                                <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">${salaryWorkSavingInfo.contribution401kAmount}</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel>
                                 <FormLabel style={{fontSize: '12px', padding: 5}} component="legend">$0</FormLabel> 
                             </div>
