@@ -183,9 +183,9 @@ export default function RadioButtonsGroup() {
                                 />%</span>
                               </ClickAwayListener>
                             </Grid>
-                            <Grid item xs={4}>
+                            {/* <Grid item xs={4}>
                                 <div style={{color: 'blue', fontWeight: 'bold', paddingTop: 5, paddingRight: '20px'}}>${salaryWorkSavingInfo.monthlyPutAsideFromPaycheck}/month</div>
-                            </Grid>
+                            </Grid> */}
                           </Grid>
                         </div>
                     </div>
