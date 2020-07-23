@@ -124,7 +124,11 @@ export default function RadioButtonsGroup() {
         <div className={classes.root}>
             <Grid container spacing={1} style={{textAlign: "center"}}>
                 <Grid item xs={12}>
-                    <h1>Your estimated take home is <span style={{color: 'green'}}>${salaryWorkSavingInfo.netIncome}</span></h1>
+                    {/* <h1>Your estimated take home is <span style={{color: 'green'}}>${salaryWorkSavingInfo.netIncome}</span></h1> */}
+                    {/* <h6>Your savings balance at the end of {salaryWorkSavingInfo.yearFuture} will be</h6>
+                    <h6 style={{color: 'green'}}>${salaryWorkSavingInfo.futureCompoundInterest}</h6> */}
+                    <div style={{fontWeight: 'bold', fontSize: '28px', margin: 5}}>Your estimated take home is</div>
+                    <div style={{color: 'green', fontWeight: 'bold', fontSize: '28px', margin: 5}}>${salaryWorkSavingInfo.netIncome}</div>
                 </Grid>
             </Grid>                
         </div>
